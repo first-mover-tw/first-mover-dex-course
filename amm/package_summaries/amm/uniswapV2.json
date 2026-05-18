@@ -1,0 +1,2572 @@
+{
+  "id": {
+    "address": "amm",
+    "name": "uniswapV2"
+  },
+  "doc": null,
+  "immediate_dependencies": [
+    {
+      "address": "std",
+      "name": "ascii"
+    },
+    {
+      "address": "std",
+      "name": "type_name"
+    },
+    {
+      "address": "std",
+      "name": "u128"
+    },
+    {
+      "address": "std",
+      "name": "u64"
+    },
+    {
+      "address": "sui",
+      "name": "balance"
+    },
+    {
+      "address": "sui",
+      "name": "coin"
+    },
+    {
+      "address": "sui",
+      "name": "event"
+    },
+    {
+      "address": "sui",
+      "name": "object"
+    },
+    {
+      "address": "sui",
+      "name": "table"
+    },
+    {
+      "address": "sui",
+      "name": "transfer"
+    },
+    {
+      "address": "sui",
+      "name": "tx_context"
+    }
+  ],
+  "attributes": [],
+  "functions": {
+    "muldiv": {
+      "source_index": 0,
+      "index": 0,
+      "doc": " Calculates (a * b) / c. Errors if result doesn't fit into u64.",
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "a",
+          "type_": "u64"
+        },
+        {
+          "name": "b",
+          "type_": "u64"
+        },
+        {
+          "name": "c",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        "u64"
+      ]
+    },
+    "ceil_muldiv": {
+      "source_index": 1,
+      "index": 1,
+      "doc": " Calculates ceil_div((a * b), c). Errors if result doesn't fit into u64.",
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "a",
+          "type_": "u64"
+        },
+        {
+          "name": "b",
+          "type_": "u64"
+        },
+        {
+          "name": "c",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        "u64"
+      ]
+    },
+    "mulsqrt": {
+      "source_index": 2,
+      "index": 2,
+      "doc": " Calculates sqrt(a * b).",
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "a",
+          "type_": "u64"
+        },
+        {
+          "name": "b",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        "u64"
+      ]
+    },
+    "ceil_div_u128": {
+      "source_index": 3,
+      "index": 3,
+      "doc": " Calculates ceil(a / b).",
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "a",
+          "type_": "u128"
+        },
+        {
+          "name": "b",
+          "type_": "u128"
+        }
+      ],
+      "return_": [
+        "u128"
+      ]
+    },
+    "pool_balances": {
+      "source_index": 4,
+      "index": 4,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              false,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        "u64",
+        "u64",
+        "u64"
+      ]
+    },
+    "pool_fees": {
+      "source_index": 5,
+      "index": 5,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              false,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        "u64"
+      ]
+    },
+    "add_pool": {
+      "source_index": 6,
+      "index": 6,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factory",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Factory",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": []
+    },
+    "cmp_type_names": {
+      "source_index": 7,
+      "index": 7,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "a",
+          "type_": {
+            "Reference": [
+              false,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "std",
+                    "name": "type_name"
+                  },
+                  "name": "TypeName",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "b",
+          "type_": {
+            "Reference": [
+              false,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "std",
+                    "name": "type_name"
+                  },
+                  "name": "TypeName",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        "u8"
+      ]
+    },
+    "init": {
+      "source_index": 8,
+      "index": 8,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": []
+    },
+    "create_pool": {
+      "source_index": 9,
+      "index": 9,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factory",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Factory",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "init_a",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "init_b",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "Datatype": {
+                    "module": {
+                      "address": "amm",
+                      "name": "uniswapV2"
+                    },
+                    "name": "LP",
+                    "type_arguments": [
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "A"
+                        }
+                      },
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "B"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "add_liquidity": {
+      "source_index": 10,
+      "index": 10,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input_a",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "input_b",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_lp_out",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "A"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "B"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "Datatype": {
+                    "module": {
+                      "address": "amm",
+                      "name": "uniswapV2"
+                    },
+                    "name": "LP",
+                    "type_arguments": [
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "A"
+                        }
+                      },
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "B"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "remove_liquidity": {
+      "source_index": 11,
+      "index": 11,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "lp_in",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "Datatype": {
+                      "module": {
+                        "address": "amm",
+                        "name": "uniswapV2"
+                      },
+                      "name": "LP",
+                      "type_arguments": [
+                        {
+                          "phantom": true,
+                          "argument": {
+                            "NamedTypeParameter": "A"
+                          }
+                        },
+                        {
+                          "phantom": true,
+                          "argument": {
+                            "NamedTypeParameter": "B"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_a_out",
+          "type_": "u64"
+        },
+        {
+          "name": "min_b_out",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "A"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "swap_a_for_b": {
+      "source_index": 12,
+      "index": 12,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_out",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "swap_b_for_a": {
+      "source_index": 13,
+      "index": 13,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_out",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "balance"
+            },
+            "name": "Balance",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "A"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "calc_swap_out": {
+      "source_index": 14,
+      "index": 14,
+      "doc": " Calculates swap result and fees based on the input amount and current pool state.",
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [],
+      "parameters": [
+        {
+          "name": "input_amount",
+          "type_": "u64"
+        },
+        {
+          "name": "input_pool_amount",
+          "type_": "u64"
+        },
+        {
+          "name": "out_pool_amount",
+          "type_": "u64"
+        },
+        {
+          "name": "fee_points",
+          "type_": "u64"
+        }
+      ],
+      "return_": [
+        "u64"
+      ]
+    },
+    "destroy_zero_or_transfer_balance": {
+      "source_index": 15,
+      "index": 15,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Private",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "T",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "balance",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "balance"
+              },
+              "name": "Balance",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "T"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "recipient",
+          "type_": "address"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": []
+    },
+    "create_pool_with_coins": {
+      "source_index": 16,
+      "index": 16,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "factory",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Factory",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "init_a",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "init_b",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "Datatype": {
+                    "module": {
+                      "address": "amm",
+                      "name": "uniswapV2"
+                    },
+                    "name": "LP",
+                    "type_arguments": [
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "A"
+                        }
+                      },
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "B"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "add_liquidity_with_coins": {
+      "source_index": 17,
+      "index": 17,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input_a",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "input_b",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_lp_out",
+          "type_": "u64"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "A"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "B"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "Datatype": {
+                    "module": {
+                      "address": "amm",
+                      "name": "uniswapV2"
+                    },
+                    "name": "LP",
+                    "type_arguments": [
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "A"
+                        }
+                      },
+                      {
+                        "phantom": true,
+                        "argument": {
+                          "NamedTypeParameter": "B"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "add_liquidity_with_coins_and_transfer_to_sender": {
+      "source_index": 18,
+      "index": 18,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input_a",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "input_b",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_lp_out",
+          "type_": "u64"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": []
+    },
+    "remove_liquidity_with_coins": {
+      "source_index": 19,
+      "index": 19,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "lp_in",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "Datatype": {
+                      "module": {
+                        "address": "amm",
+                        "name": "uniswapV2"
+                      },
+                      "name": "LP",
+                      "type_arguments": [
+                        {
+                          "phantom": true,
+                          "argument": {
+                            "NamedTypeParameter": "A"
+                          }
+                        },
+                        {
+                          "phantom": true,
+                          "argument": {
+                            "NamedTypeParameter": "B"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_a_out",
+          "type_": "u64"
+        },
+        {
+          "name": "min_b_out",
+          "type_": "u64"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "A"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "remove_liquidity_with_coins_and_transfer_to_sender": {
+      "source_index": 20,
+      "index": 20,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "lp_in",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "Datatype": {
+                      "module": {
+                        "address": "amm",
+                        "name": "uniswapV2"
+                      },
+                      "name": "LP",
+                      "type_arguments": [
+                        {
+                          "phantom": true,
+                          "argument": {
+                            "NamedTypeParameter": "A"
+                          }
+                        },
+                        {
+                          "phantom": true,
+                          "argument": {
+                            "NamedTypeParameter": "B"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_a_out",
+          "type_": "u64"
+        },
+        {
+          "name": "min_b_out",
+          "type_": "u64"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": []
+    },
+    "swap_a_for_b_with_coin": {
+      "source_index": 21,
+      "index": 21,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "A"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_out",
+          "type_": "u64"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "B"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "swap_b_for_a_with_coin": {
+      "source_index": 22,
+      "index": 22,
+      "doc": null,
+      "attributes": [],
+      "visibility": "Public",
+      "entry": false,
+      "type_parameters": [
+        {
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "pool",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "amm",
+                    "name": "uniswapV2"
+                  },
+                  "name": "Pool",
+                  "type_arguments": [
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "A"
+                      }
+                    },
+                    {
+                      "phantom": true,
+                      "argument": {
+                        "NamedTypeParameter": "B"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "input",
+          "type_": {
+            "Datatype": {
+              "module": {
+                "address": "sui",
+                "name": "coin"
+              },
+              "name": "Coin",
+              "type_arguments": [
+                {
+                  "phantom": true,
+                  "argument": {
+                    "NamedTypeParameter": "B"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "min_out",
+          "type_": "u64"
+        },
+        {
+          "name": "ctx",
+          "type_": {
+            "Reference": [
+              true,
+              {
+                "Datatype": {
+                  "module": {
+                    "address": "sui",
+                    "name": "tx_context"
+                  },
+                  "name": "TxContext",
+                  "type_arguments": []
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "return_": [
+        {
+          "Datatype": {
+            "module": {
+              "address": "sui",
+              "name": "coin"
+            },
+            "name": "Coin",
+            "type_arguments": [
+              {
+                "phantom": true,
+                "argument": {
+                  "NamedTypeParameter": "A"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "structs": {
+    "PoolCreated": {
+      "index": 0,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Copy",
+        "Drop"
+      ],
+      "type_parameters": [],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "pool_id": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "object"
+                },
+                "name": "ID",
+                "type_arguments": []
+              }
+            }
+          },
+          "a": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "b": {
+            "index": 2,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "init_a": {
+            "index": 3,
+            "doc": null,
+            "type_": "u64"
+          },
+          "init_b": {
+            "index": 4,
+            "doc": null,
+            "type_": "u64"
+          },
+          "lp_minted": {
+            "index": 5,
+            "doc": null,
+            "type_": "u64"
+          }
+        }
+      }
+    },
+    "LiquidityAdded": {
+      "index": 1,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Copy",
+        "Drop"
+      ],
+      "type_parameters": [],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "pool_id": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "object"
+                },
+                "name": "ID",
+                "type_arguments": []
+              }
+            }
+          },
+          "a": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "b": {
+            "index": 2,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "amountin_a": {
+            "index": 3,
+            "doc": null,
+            "type_": "u64"
+          },
+          "amountin_b": {
+            "index": 4,
+            "doc": null,
+            "type_": "u64"
+          },
+          "lp_minted": {
+            "index": 5,
+            "doc": null,
+            "type_": "u64"
+          }
+        }
+      }
+    },
+    "LiquidityRemoved": {
+      "index": 2,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Copy",
+        "Drop"
+      ],
+      "type_parameters": [],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "pool_id": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "object"
+                },
+                "name": "ID",
+                "type_arguments": []
+              }
+            }
+          },
+          "a": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "b": {
+            "index": 2,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "amountout_a": {
+            "index": 3,
+            "doc": null,
+            "type_": "u64"
+          },
+          "amountout_b": {
+            "index": 4,
+            "doc": null,
+            "type_": "u64"
+          },
+          "lp_burnt": {
+            "index": 5,
+            "doc": null,
+            "type_": "u64"
+          }
+        }
+      }
+    },
+    "Swapped": {
+      "index": 3,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Copy",
+        "Drop"
+      ],
+      "type_parameters": [],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "pool_id": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "object"
+                },
+                "name": "ID",
+                "type_arguments": []
+              }
+            }
+          },
+          "tokenin": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "amountin": {
+            "index": 2,
+            "doc": null,
+            "type_": "u64"
+          },
+          "tokenout": {
+            "index": 3,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "amountout": {
+            "index": 4,
+            "doc": null,
+            "type_": "u64"
+          }
+        }
+      }
+    },
+    "LP": {
+      "index": 4,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Drop"
+      ],
+      "type_parameters": [
+        {
+          "phantom": true,
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "phantom": true,
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "dummy_field": {
+            "index": 0,
+            "type_": "bool"
+          }
+        }
+      }
+    },
+    "Pool": {
+      "index": 5,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Key"
+      ],
+      "type_parameters": [
+        {
+          "phantom": true,
+          "name": "A",
+          "constraints": []
+        },
+        {
+          "phantom": true,
+          "name": "B",
+          "constraints": []
+        }
+      ],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "id": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "object"
+                },
+                "name": "UID",
+                "type_arguments": []
+              }
+            }
+          },
+          "balance_a": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "balance"
+                },
+                "name": "Balance",
+                "type_arguments": [
+                  {
+                    "phantom": true,
+                    "argument": {
+                      "NamedTypeParameter": "A"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "balance_b": {
+            "index": 2,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "balance"
+                },
+                "name": "Balance",
+                "type_arguments": [
+                  {
+                    "phantom": true,
+                    "argument": {
+                      "NamedTypeParameter": "B"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "lp_supply": {
+            "index": 3,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "balance"
+                },
+                "name": "Supply",
+                "type_arguments": [
+                  {
+                    "phantom": true,
+                    "argument": {
+                      "Datatype": {
+                        "module": {
+                          "address": "amm",
+                          "name": "uniswapV2"
+                        },
+                        "name": "LP",
+                        "type_arguments": [
+                          {
+                            "phantom": true,
+                            "argument": {
+                              "NamedTypeParameter": "A"
+                            }
+                          },
+                          {
+                            "phantom": true,
+                            "argument": {
+                              "NamedTypeParameter": "B"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "fee_points": {
+            "index": 4,
+            "doc": " Fees for liquidity provider expressed in points (30 point is 0.3%)",
+            "type_": "u64"
+          }
+        }
+      }
+    },
+    "Factory": {
+      "index": 6,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Key"
+      ],
+      "type_parameters": [],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "id": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "object"
+                },
+                "name": "UID",
+                "type_arguments": []
+              }
+            }
+          },
+          "table": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "sui",
+                  "name": "table"
+                },
+                "name": "Table",
+                "type_arguments": [
+                  {
+                    "phantom": true,
+                    "argument": {
+                      "Datatype": {
+                        "module": {
+                          "address": "amm",
+                          "name": "uniswapV2"
+                        },
+                        "name": "PoolItem",
+                        "type_arguments": []
+                      }
+                    }
+                  },
+                  {
+                    "phantom": true,
+                    "argument": "bool"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "PoolItem": {
+      "index": 7,
+      "doc": null,
+      "attributes": [],
+      "abilities": [
+        "Copy",
+        "Drop",
+        "Store"
+      ],
+      "type_parameters": [],
+      "fields": {
+        "positional_fields": false,
+        "fields": {
+          "a": {
+            "index": 0,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          },
+          "b": {
+            "index": 1,
+            "doc": null,
+            "type_": {
+              "Datatype": {
+                "module": {
+                  "address": "std",
+                  "name": "type_name"
+                },
+                "name": "TypeName",
+                "type_arguments": []
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "enums": {}
+}

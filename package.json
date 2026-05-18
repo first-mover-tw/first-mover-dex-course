@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@mysten/codegen": "^0.10.6"
+  }
+}
